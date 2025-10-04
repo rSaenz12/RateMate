@@ -19,16 +19,20 @@
     <!--    <p class="navBarLogo">RateMate</p>-->
     <img src="resources/RateMateLogo.JPG" alt="RateMate Logo" class="navBarLogo">
 
+    <!--    This one is "empty" so that the filter is reset-->
     <a href="RateMateLandingPage.html">
         <button onclick="sessionStorage.setItem('sortByCondition', 'empty')" type="button" class="navButton">Search
         </button>
     </a>
+
+    <!--sorts by distance    -->
     <a href="RateMateResultsPage.html">
         <button id="nearBy" onclick="sessionStorage.setItem('sortByCondition', 'location')" type="button"
                 class="navButton">Near By
         </button>
     </a>
 
+    <!--sorts by rating    -->
     <a href="RateMateResultsPage.html">
         <button id="highestRated" onclick="sessionStorage.setItem('sortByCondition', 'rating')" type="button"
                 class="navButton">Highest Rated
@@ -39,7 +43,7 @@
 </div>
 
 <div class="container" style="width: 80%; max-width: 1000px">
-    <h1 style="color: white;" id="resultsHeader">RateMate Results </h1>
+    <h1 class="title" id="resultsHeader">RateMate Results </h1>
 
     <table id="restaurant-table" style="width: 100%">
         <thead>
@@ -76,6 +80,7 @@
         </thead>
         <tbody>
         <script>
+            //Example data, later it will be from a database and not a premade JSON
             const restaurantJson = [
                 {
                     "name": "Tony's Pizza",
@@ -99,11 +104,13 @@
                     "image": "sushiSpot.jpg"
                 }
             ];
-            //const data = JSON.parse(restaurantJson);
-            const data = restaurantJson;
+
+
+            // used to fill in the html table
             const tableBody = document.querySelector('#restaurant-table tbody');
             let tableHTML = '';
 
+            //sorting based on the selected filters
             if (condition === "distance") {
                 restaurantJson.sort((a, b) => a.distance - b.distance);
             }
@@ -125,8 +132,8 @@
                 });
             }
 
+            //looping through the objects and adding strings to the table
             restaurantJson.forEach(restaurant => {
-
                 console.log(`Name: ${restaurant.name}, Distance: ${restaurant.distance}, Cuisine: ${restaurant.cuisine}, Rating: ${restaurant.rating}`);
                 tableHTML += `<tr>
                         <td><img src="resources/restaurantImages/${restaurant.image}" alt="${restaurant.name}" width="100"></td>

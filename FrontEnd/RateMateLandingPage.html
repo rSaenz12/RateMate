@@ -12,17 +12,21 @@
 <div class="navigationBar">
     <!--    <p class="navBarLogo">RateMate</p>-->
     <img src="resources/RateMateLogo.JPG" alt="RateMate Logo" class="navBarLogo">
+
+    <!--    This one is "empty" so that the filter is reset-->
     <a href="RateMateLandingPage.html">
         <button onclick="sessionStorage.setItem('sortByCondition', 'empty')" type="button" class="navButton">Search
         </button>
     </a>
 
+    <!--sorts by distance    -->
     <a href="RateMateResultsPage.html">
         <button id="nearBy" onclick="sessionStorage.setItem('sortByCondition', 'distance')" type="button"
                 class="navButton">Near By
         </button>
     </a>
 
+    <!--    sorts by rating-->
     <a href="RateMateResultsPage.html">
         <button id="highestRated" onclick="sessionStorage.setItem('sortByCondition', 'rating')" type="button"
                 class="navButton">Highest Rated
@@ -30,11 +34,13 @@
     </a>
 
 </div>
+
 <div class="container">
     <h1 class="title">Welcome to RateMate</h1>
     <div class="searchBar">
         <input id="searchInput" type="search" placeholder="Search.."/>
         <a href="RateMateResultsPage.html">
+            <!--            grabbing the input and commiting it to the session storage-->
             <script>const searchInput = document.getElementById('searchInput');</script>
             <button onclick="sessionStorage.setItem('userInput',searchInput.value )" type="submit" class="searchButton">
                 Search

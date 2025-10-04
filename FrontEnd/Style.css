@@ -8,8 +8,9 @@
 
     border: 10px black solid;
     border-radius: 10px;
-
 }
+
+/*not sure if body or text class is used, remove if not*/
 .body{
     margin:auto;
 
@@ -29,6 +30,8 @@
     /*left: 50%;*/
     /*translate: -50% -50%;*/
 }
+
+/*search bar styling*/
 .searchBar{
     display: flex;
     width: 100%;
@@ -50,7 +53,7 @@
     border-radius: 10px;
 }
 
-
+/*generic container, has black background and white boarder that is rounded at corners*/
 .container {
     background-color: black;
     opacity: 90%;
@@ -67,6 +70,7 @@
     padding: 10px;
 }
 
+/*navigation bar styling*/
 .navigationBar{
     display: flex;
     justify-content: center;
@@ -83,7 +87,6 @@
     /*outline: 2px white solid;*/
     /*border-radius: 10px;*/
 }
-
 .navButton{
     padding: 10px 20px;
     font-size: 1rem;
@@ -109,6 +112,7 @@
     border-radius: 10px;
 }
 
+/*generic outline*/
 .outline{
     width: auto;
     height: auto;
@@ -117,6 +121,8 @@
     border-radius: 10px;
 }
 
+
+/*table styling*/
 th{
     text-align: left;
     background-color: lightgray;
@@ -125,6 +131,8 @@ th{
 td{
     color: white;
 }
+
+/*styling for every even row in the table*/
 tr:nth-of-type(2n){
     background-color: darkgrey;
     td{
@@ -142,27 +150,20 @@ tr:nth-of-type(2n){
      border: 2px white solid;
      border-radius: 10px;
      border-collapse: collapse;
-
  }
 
+/* created using gemini to remove the styling of buttons to look correct as headers for table*/
 .my-custom-button {
-    /* Remove native styling */
     -webkit-appearance: none;
     appearance: none;
-
-    /* Reset core properties */
     border: none;
     background: transparent;
     padding: 0;
     margin: 0;
-
-    /* Text formatting */
     font: inherit;
     color: inherit;
     text-align: inherit;
     text-decoration: none;
-
-
     background-color: lightgray;
     color: black;
     cursor: pointer;
