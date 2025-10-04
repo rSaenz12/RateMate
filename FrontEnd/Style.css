@@ -44,6 +44,10 @@
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
+    color: white;
+    background-color: black;
+    border: 2px white solid;
+    border-radius: 10px;
 }
 
 
@@ -62,21 +66,6 @@
     border-radius: 10px;
     padding: 10px;
 }
-/*.navigationBar{*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    align-items: center;*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    left: 50%;*/
-/*    translate: -50% -50%;*/
-
-/*}*/
-/*.navigationBar button{*/
-/*    padding: 10px 20px;*/
-/*    font-size: 1rem;*/
-/*    cursor: pointer;*/
-/*}*/
 
 .navigationBar{
     display: flex;
@@ -126,4 +115,57 @@
     padding: 10px;
     border: 2px white solid;
     border-radius: 10px;
+}
+
+th{
+    text-align: left;
+    background-color: lightgray;
+    color: black;
+}
+td{
+    color: white;
+}
+tr:nth-of-type(2n){
+    background-color: darkgrey;
+    td{
+        color: black;
+    }
+}
+
+ th, td {
+    padding: 1rem;
+}
+
+ table{
+     background-color: black;
+     padding: 1rem;
+     border: 2px white solid;
+     border-radius: 10px;
+     border-collapse: collapse;
+
+ }
+
+.my-custom-button {
+    /* Remove native styling */
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* Reset core properties */
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+
+    /* Text formatting */
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    text-decoration: none;
+
+
+    background-color: lightgray;
+    color: black;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
 }

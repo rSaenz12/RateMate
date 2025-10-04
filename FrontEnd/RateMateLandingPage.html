@@ -5,24 +5,43 @@
     <title>RateMate</title>
     <link rel="stylesheet" href="Style.css">
 </head>
-<body class = "background" >
+<body class="background">
 <img src="resources/StoreFrontsGptNight.png" alt="StoreFronts"
      style="position: fixed; top: 50px; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -1;">
 
 <div class="navigationBar">
-<!--    <p class="navBarLogo">RateMate</p>-->
+    <!--    <p class="navBarLogo">RateMate</p>-->
     <img src="resources/RateMateLogo.JPG" alt="RateMate Logo" class="navBarLogo">
-    <button type="button" class="navButton">Search</button>
-    <button type="button" class="navButton">Near By</button>
-    <button type="button" class="navButton">Highest Rated</button>
-</div>
+    <a href="RateMateLandingPage.html">
+        <button onclick="sessionStorage.setItem('sortByCondition', 'empty')" type="button" class="navButton">Search
+        </button>
+    </a>
 
-    <div class="container">
-        <h1 class="title">Welcome to RateMate</h1>
-            <div class="searchBar">
-                <input type="text" placeholder="Search.." />
-                <button type="submit" class="searchButton">Search</button>
-            </div>
+    <a href="RateMateResultsPage.html">
+        <button id="nearBy" onclick="sessionStorage.setItem('sortByCondition', 'distance')" type="button"
+                class="navButton">Near By
+        </button>
+    </a>
+
+    <a href="RateMateResultsPage.html">
+        <button id="highestRated" onclick="sessionStorage.setItem('sortByCondition', 'rating')" type="button"
+                class="navButton">Highest Rated
+        </button>
+    </a>
+
+</div>
+<div class="container">
+    <h1 class="title">Welcome to RateMate</h1>
+    <div class="searchBar">
+        <input id="searchInput" type="search" placeholder="Search.."/>
+        <a href="RateMateResultsPage.html">
+            <script>const searchInput = document.getElementById('searchInput');</script>
+            <button onclick="sessionStorage.setItem('userInput',searchInput.value )" type="submit" class="searchButton">
+                Search
+            </button>
+        </a>
+
     </div>
+</div>
 </body>
 </html>

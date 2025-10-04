@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RateMateResults</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body class="background">
+<script>
+    let condition = sessionStorage.getItem('sortByCondition');
+    console.log(condition)
+    let search = sessionStorage.getItem('userInput');
+    console.log(search)
+</script>
+
+<img src="resources/StoreFrontsGptNight.png" alt="StoreFronts"
+     style="position: fixed; top: 50px; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -1;">
+<div class="navigationBar">
+    <!--    <p class="navBarLogo">RateMate</p>-->
+    <img src="resources/RateMateLogo.JPG" alt="RateMate Logo" class="navBarLogo">
+
+    <a href="RateMateLandingPage.html">
+        <button onclick="sessionStorage.setItem('sortByCondition', 'empty')" type="button" class="navButton">Search
+        </button>
+    </a>
+    <a href="RateMateResultsPage.html">
+        <button id="nearBy" onclick="sessionStorage.setItem('sortByCondition', 'location')" type="button"
+                class="navButton">Near By
+        </button>
+    </a>
+
+    <a href="RateMateResultsPage.html">
+        <button id="highestRated" onclick="sessionStorage.setItem('sortByCondition', 'rating')" type="button"
+                class="navButton">Highest Rated
+        </button>
+    </a>
+
+
+</div>
+
+<div class="container" style="width: 80%; max-width: 1000px">
+    <h1 style="color: white;" id="resultsHeader">RateMate Results </h1>
+
+    <table id="restaurant-table" style="width: 100%">
+        <thead>
+        <tr>
+            <th></th>
+            <th>
+                <a href="RateMateResultsPage.html">
+                    <button onclick="sessionStorage.setItem('sortByCondition', 'name')" class="my-custom-button">Name
+                    </button>
+                </a>
+            </th>
+            <th>
+                <a href="RateMateResultsPage.html">
+                    <button onclick="sessionStorage.setItem('sortByCondition', 'cuisine')" class="my-custom-button">
+                        Cuisine
+                    </button>
+                </a>
+            </th>
+            <th>
+                <a href="RateMateResultsPage.html">
+                    <button onclick="sessionStorage.setItem('sortByCondition', 'distance')" class="my-custom-button">
+                        Distance
+                    </button>
+                </a>
+            </th>
+            <th>
+                <a href="RateMateResultsPage.html">
+                    <button onclick="sessionStorage.setItem('sortByCondition', 'rating')" class="my-custom-button">
+                        Rating
+                    </button>
+                </a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <script>
+            const restaurantJson = [
+                {
+                    "name": "Tony's Pizza",
+                    "distance": 1,
+                    "cuisine": "Italian",
+                    "rating": 4.5,
+                    "image": "tonyPizza.jpg"
+                },
+                {
+                    "name": "Burger Barn",
+                    "distance": 3,
+                    "cuisine": "American",
+                    "rating": 4.0,
+                    "image": "burgerBarn.jpg"
+                },
+                {
+                    "name": "Sushi Spot",
+                    "distance": 4,
+                    "cuisine": "Japanese",
+                    "rating": 4.8,
+                    "image": "sushiSpot.jpg"
+                }
+            ];
+            //const data = JSON.parse(restaurantJson);
+            const data = restaurantJson;
+            const tableBody = document.querySelector('#restaurant-table tbody');
+            let tableHTML = '';
+
+            if (condition === "distance") {
+                restaurantJson.sort((a, b) => a.distance - b.distance);
+            }
+            if (condition === "rating") {
+                restaurantJson.sort((a, b) => b.rating - a.rating);
+            }
+            if (condition === "name" || condition === "cuisine") {
+                restaurantJson.sort((a, b) => {
+                    const nameA = a.name.toLowerCase();
+                    const nameB = b.name.toLowerCase();
+
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                    return 0;
+                });
+            }
+
+            restaurantJson.forEach(restaurant => {
+
+                console.log(`Name: ${restaurant.name}, Distance: ${restaurant.distance}, Cuisine: ${restaurant.cuisine}, Rating: ${restaurant.rating}`);
+                tableHTML += `<tr>
+                        <td><img src="resources/restaurantImages/${restaurant.image}" alt="${restaurant.name}" width="100"></td>
+                        <td>${restaurant.name}</td>
+                        <td>${restaurant.cuisine}</td>
+                        <td>${restaurant.distance}</td>
+                        <td>${restaurant.rating}</td>
+                    </tr>`;
+            });
+            tableBody.innerHTML = tableHTML;
+
+
+        </script>
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>
