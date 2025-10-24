@@ -6,8 +6,32 @@
     <link rel="stylesheet" href="Style.css">
 </head>
 <body class="background">
-<img src="resources/StoreFrontsGptNight.png" alt="StoreFronts"
+var light_or_dark_path = "resources/StoreFrontsGPT.png";
+
+
+<!--<img src="resources/StoreFrontsGptNight.png" alt="StoreFronts"-->
+<!--     style="position: fixed; top: 50px; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -1;">-->
+<img id="backgroundImage" src="resources/StoreFrontsGPT.png" alt="StoreFronts"
      style="position: fixed; top: 50px; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -1;">
+<script>
+    const img = document.getElementById('backgroundImage');
+    const darkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Set initial image based on user preference
+    function updateBackground(e) {
+        if (e.matches) {
+            img.src = "resources/StoreFrontsGptNight.png";
+        } else {
+            img.src = "resources/StoreFrontsGPT.png";
+        }
+    }
+
+    // Listen for changes in color scheme
+    darkMode.addEventListener('change', updateBackground);
+
+    // Run once on load
+    updateBackground(darkMode);
+</script>
 
 <div class="navigationBar">
     <!--    <p class="navBarLogo">RateMate</p>-->

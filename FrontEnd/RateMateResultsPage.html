@@ -13,8 +13,30 @@
     console.log(search)
 </script>
 
-<img src="resources/StoreFrontsGptNight.png" alt="StoreFronts"
+<!--<img src="resources/StoreFrontsGptNight.png" alt="StoreFronts"-->
+<!--     style="position: fixed; top: 50px; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -1;">-->
+
+<img id="backgroundImage" src="resources/StoreFrontsGPT.png" alt="StoreFronts"
      style="position: fixed; top: 50px; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -1;">
+<script>
+    const img = document.getElementById('backgroundImage');
+    const darkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+    //initial image based on user preference
+    function updateBackground(e) {
+        if (e.matches) {
+            img.src = "resources/StoreFrontsGptNight.png";
+        } else {
+            img.src = "resources/StoreFrontsGPT.png";
+        }
+    }
+
+    //Listen for changes in color scheme
+    darkMode.addEventListener('change', updateBackground);
+
+    //Run on load
+    updateBackground(darkMode);
+</script>
 <div class="navigationBar">
     <!--    <p class="navBarLogo">RateMate</p>-->
     <img src="resources/RateMateLogo.JPG" alt="RateMate Logo" class="navBarLogo">
